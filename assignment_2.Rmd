@@ -1,0 +1,68 @@
+---
+title: "Assignment 2"
+author: "Lauren Thomson"
+date: "2023-01-10"
+output: 
+    prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+# All About Quechee Ski Hill 
+
+![ ](https://www.newenglandskihistory.com/Vermont/quecheeprofile3.jpg)
+
+### General Information 
+
+Lifts   | Types of Terrain  | Best Trails
+------------- | ------------- | -------------
+Rope tow | Groomed | Dewey's Drop 
+T bar   | Woods | Clean Break
+Chair Lift  | Terrain Park (if snow permits) | Mel's Run 
+
+### Why Quechee Ski Hill (where I live) is better than it seems
+
+*Some* may say that Quechee ski hill is not a real mountain or is only for beginners, **BUT** having skied there my entire life I can attest that it is well worth the trip for its *crazy* slopes and lovely community. 
+
+Reasons why Quechee is a great ski local: 
+
+* Good place to learn for beginners 
+* There are never any lines
+* They never check you for a ticket 
+* There is always a happy hour in the lodge at 5 
+* Speaking of the lodge the prices are far more inexpensive
+* The 12 minute chairlift ride allows for great bonding with your fellow skiers
+* A lovely tight knit community 
+
+### Some final information
+
+A numbered list of the best to worst trails at Quechee Ski Hill:  
+
+1. Dewey's Drop  
+2. Mel's Run  
+3. Clean Break  
+4. Quechee Express  
+5. Maple Trail  
+6. Face  
+7. Stagecoach  
+8. T Bar    
+9. Plateau  
+10. Waterline  
+11. Little Kings  
+12. Bunny Hill
+
+![ ](https://www.skicentral.com/images/trailmaps/802015-2400.jpg)
+
+```Our snow coverage looks like this:```  
+
+$y=e^x$ 
+
+```**EXPONENTIAL!!**```
+
+
+If you want to learn more about Quechee or plan a visit to breathe in the fresh O~2~ of the trees visit: 
+
+[Ski Vermont](https://skivermont.com/ski-quechee/)
+
+
+
