@@ -1,0 +1,14 @@
+---
+title: "Lauren's BIOL1007A Webpage"
+author: "Lauren Thomson"
+date: "2023-01-10"
+output:
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## Assignments 
+
+[Assignment 1](assignment_1.html)
+

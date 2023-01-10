@@ -1,0 +1,59 @@
+---
+title: "Assignment 1"
+author: "Lauren Thomson"
+date: "2023-01-10"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+1/10 - git & Github 
+
+Git & Github
+* Version control: keeping and restoring past versions of files
+
+* Initially for programmers to collaborate with
+
+
+* git versus Github - always talk to git in terminal 
+
+    * Git is the local computer and Github is the free remote website for public storage of projects 
+
+    * You make a clone of work and upload to github 
+
+    * Repository
+
+        * Working on repository means making changes
+
+        * Add new file
+
+        * Alter existing files
+
+        * Delete existing files 
+
+    * a Commit
+
+        * Snapshot of current file systems
+
+    * to commit
+
+        * Saving or recording changes to local repository 
+
+    * Push
+
+        * Transferring changes from local repository to github 
+
+    * Pull 
+
+        * Brings down git hub repo to computer 
+
+    * Main branch - 
+
+        * is your history of tracked changes of commits
+
+    * Forking
+
+        * A way to make/push different changes and push to github 
+
+* To get webpage - create new .Rmd so that you can knit to .html 
