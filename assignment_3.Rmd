@@ -1,0 +1,85 @@
+---
+title: "Assignment 3"
+author: "Lauren Thomson"
+date: "2023-01-12"
+output:
+    prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+## Question #1  
+# 1a
+```{r}
+x<-1.1
+a<-2.2
+b<-3.3
+z <- x^(a^b)
+print(z)
+```
+# 1b
+```{r}
+z<-(x^a)^b
+print(z)
+```
+# 1c
+```{r}
+z <- 3*(x^3) + 2*(x^2) + 1
+print(z)
+```
+
+## Question #2   
+# 2a
+```{r}
+a=c(seq(from=1, to=8), seq(from=7, to=1))
+print(a)
+```
+# 2b
+```{r}
+bvec <- rep(x=1:5)
+b <-rep(x=1:5, times=bvec)
+print(b)
+
+```
+# 2c
+```{r}
+cvec <- rep(x=1:5)
+c <- rep(x=5:1, times=cvec)
+print(c)
+```
+
+## Question #3  
+#3a.
+```{r}
+queue <- c('sheep', 'fox', 'owl', 'ant')
+queue <- c(queue, 'serpent')
+print(queue)
+```
+# 3b
+```{r}
+queue <- queue[-1]
+print(queue)
+```
+# 3c 
+```{r}
+queue <- c('Donkey', queue[1:4])
+print(queue)
+```
+# 3d
+```{r}
+queue <- queue[-5]
+print(queue)
+```
+# 3e
+```{r}
+queue <- append(queue, "aphid", after=3)
+print(queue)
+```
+# 3f
+```{r}
+aphid_location<-which(queue=="aphid")
+print(aphid_location)
+```
+
+
+
+
