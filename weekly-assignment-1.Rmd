@@ -1,0 +1,80 @@
+---
+title: "Weekly Assignment 1"
+author: "Lauren Thomson"
+date: "2023-01-16"
+output: 
+    prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+# How to set up a GitHub Webpage in R Studio for a macOS! 
+
+## Part 1: Install homebrew 
+
+In order to install homebrew, we will need two things. First, we will need to open our computers terminal. The terminal is how we talk to the computer.   
+
+1. Go to the search bar of your mac and type in terminal 
+2. Once the terminal is open check that final text reads yourname$   
+
+**Note:** *To send a command to the computer we will always want to make sure we are typing after yourname$*   
+
+Ex: 
+
+![ ](https://photos5.appleinsider.com/gallery/29497-47787-001-Mac-uptime-l.jpg)
+
+Next, we need the code to install homebrew. 
+
+1. Go to this [website](https://brew.sh/)
+2. Copy the install homebrew code 
+
+![ ](https://cdn.appuals.com/wp-content/uploads/2021/03/install0.png)
+
+Next, return to your terminal with th line of code copied. 
+
+1. Paste the copied code into the terminal after yourname$
+2. Hit enter, and wait for the homebrew to download and install. 
+
+**Note:** *Make sure your internet speed not running super slow or the download and installation will take a long time. The download should take ~8 minutes, if it is taking longer, try checking your internet.* 
+
+Once homebrew is installed run ```$ brew install git```. 
+
+**Note:** *If you recieve an error saying the brew function is not found it means something in the installation is likely not complete. Sometimes there will be a few lines of code to copy and paste into the terminal at the end of installation. Just follow the directions your terminal gives you and you should be good!* 
+
+Last, restart R Studio if it was already open! 
+
+# Part 2: Setting up GitHub Account! 
+
+It's time to make our GitHub account. 
+
+1. Go to [github.com](https://github.com/) and create an account/profile. 
+
+# Part 3: Creating a Personal Access Token!
+
+## Making PAT on github.com 
+1. Go to Settings
+2. On the left side of the screen, scroll all the way down and choose Developer settings
+3. On the left, click Personal access tokens and choose Tokens (classic)
+4. Click Generate new token and choose the Classic option
+5. Write “BIOL1007A” for the Note
+6. Under Expiration, choose Custom - and set the expiration date to 12/31/2023
+7. Click the repo check box (first one under select scopes) and it will select all of the sub boxes
+8. Scroll down and select Generate token
+9. Copy the entire token number it generates and save it somewhere - either in a document or note or email it to yourself
+
+## Installing github PAT in R Studio 
+
+1. In the console, the credentials package by typing this in the console: ```install.packages("credentials")```
+2. Run this code in the terminal: 
+   ``` git config --global user.email "put github email here"```
+   ``` git config --global user.name "put your name here"```
+    ```credentials::set_github_pat("put PAT here")```
+    
+# Creating your own Repository in GitHub: 
+
+
+
+# Set up local R project: 
+
+# Link Repository and local R project: 
+
+# Build a webpage: 

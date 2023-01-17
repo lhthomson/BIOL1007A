@@ -48,7 +48,7 @@ print(c)
 ```
 
 ## Question #3  
-#3a.
+# 3a
 ```{r}
 queue <- c('sheep', 'fox', 'owl', 'ant')
 queue <- c(queue, 'serpent')
