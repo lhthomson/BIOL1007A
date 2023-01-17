@@ -64,17 +64,87 @@ It's time to make our GitHub account.
 ## Installing github PAT in R Studio 
 
 1. In the console, the credentials package by typing this in the console: ```install.packages("credentials")```
-2. Run this code in the terminal: 
-   ``` git config --global user.email "put github email here"```
-   ``` git config --global user.name "put your name here"```
+2. Run this code in the terminal:   
+   ``` git config --global user.email "put github email here"```  
+   ``` git config --global user.name "put your name here"```  
     ```credentials::set_github_pat("put PAT here")```
     
-# Creating your own Repository in GitHub: 
+# Part 4: Creating your own Repository in GitHub! 
 
 
 
-# Set up local R project: 
+1. Go to your Profile 
+2. Click Repositories 
+3. Create a new repository by clicking the + button 
+4. Name it (keep track of exact name)
+5. Under settings include a READ ME statement 
+6. Do **NOT** add gitignore
+7. Add a license (MIT is a good one)
 
-# Link Repository and local R project: 
+# Part 5 Set up local R project! 
 
-# Build a webpage: 
+1. Click the right hand pull down menu and hit new project
+2. Select Version Control 
+
+![ ](https://carpentries-incubator.github.io/Reproducible-Publications-with-RStudio/fig/05-new-project.PNG)
+
+3. Select git 
+
+**Note:** *A this point R studio will be asking you for a Repository URL. You will have to return to your GitHub to get your Repo URL.* 
+
+Ex: 
+
+![ ](https://i.stack.imgur.com/dLEp5.png)
+# Part 6: Link Repository and local R project! 
+
+1. Return to you GitHub Repo
+2. Click the green code button and copy the https URL 
+3. Return to R Studio
+4. Paste that URL into R Studio 
+5. In R Studio, name the project the exact same name as the GitHub repo
+6. Use the browse button to put the project in an accessible location on your computer. ie documents or desktop **NOT** downloads
+7. Click create project 
+
+**Note:** *A this point you should be in your project in your R Studio.* 
+
+# PArt 7: Build a webpage! 
+
+To build a webpage we will need to make an Rmarkdown file. This Rmarkdown file will be how we add and edit our webpage. 
+
+1. Go to the left drop down menu in R Studio and click R Markdown. 
+
+**Note:** *This R Markdown page is going to the the first page of your webpage. Because it is the first page of your webpage, it must be named index so that it will always be first.* 
+
+2. Save this R Markdown as ```index.Rmd```
+3. Click knit or run CTRL-SHFT-k to "knit" to html 
+
+# Commit these changes! 
+
+Now its time to upload the changes you have made locally to your GitHub browser. 
+
+1. Go to your terminal in R Studio.
+2. Run git status to see the changes to have made. 
+
+**Note:** *Anything in red is changes that have not been uploaded to GitHub but have been changed locally.*
+
+3. Run git add -A to command that you want to add all changes to GitHub
+4. Run git status again to make sure all the changes have turned green.
+5. Run git commit -am "with note" to commit all your changes. Add a note for your memory about what the changes you are making are.
+6. Run git push to send changes to GitHub
+
+# Part 8: Host the Webpage! 
+
+Finally, it's time to publish our webpage from GitHub. 
+
+1. Go to [github.com](https://github.com/)
+2. Go to your Repository 
+3. Go to settings
+4. Go to the pages tab on the left hand side bar
+5. Change Branch from none to main. 
+6. Click save and refresh
+
+With in a minute or two you should have your very own webpage at ```https://github.com/your-username/repo-name```
+
+
+
+
