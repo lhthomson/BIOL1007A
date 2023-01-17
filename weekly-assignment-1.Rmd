@@ -143,7 +143,7 @@ Finally, it's time to publish our webpage from GitHub.
 5. Change Branch from none to main. 
 6. Click save and refresh
 
-With in a minute or two you should have your very own webpage at ```https://github.com/your-username/repo-name```
+With in a minute or two you should have your very own webpage at ```https://username.github.io/repo-name```
 
 
 
