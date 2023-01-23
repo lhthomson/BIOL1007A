@@ -107,7 +107,7 @@ Ex:
 
 **Note:** *A this point you should be in your project in your R Studio.* 
 
-# PArt 7: Build a webpage! 
+# Part 7: Build a webpage! 
 
 To build a webpage we will need to make an Rmarkdown file. This Rmarkdown file will be how we add and edit our webpage. 
 
@@ -143,7 +143,7 @@ Finally, it's time to publish our webpage from GitHub.
 5. Change Branch from none to main. 
 6. Click save and refresh
 
-With in a minute or two you should have your very own webpage at ```https://username.github.io/repo-name```
+With in a minute or two you should have your very own webpage at   ```https://username.github.io/repo-name```
 
 
 

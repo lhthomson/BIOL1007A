@@ -1,0 +1,50 @@
+---
+title: "Assignment 4"
+author: "Lauren Thomson"
+date: "2023-01-17"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## Question 1: 
+
+```{r}
+#Create a vector of consecutive integers from 1 to n_dims2.
+
+n_dims = sample(3:10, 1)
+cons_int <- 1:(n_dims)^2
+
+#Use the sample function to randomly reshuffle these values.
+
+rearrange <- sample(cons_int)
+
+#create a square matrix with these elements.
+
+matrixR <- matrix(data = rearrange, nrow = n_dims, ncol = n_dims) 
+
+#print out the matrix.
+
+print(matrixR)
+
+#find a function in r to transpose the matrix.
+
+TmatrixR <- t(matrixR)
+
+#print it out again and note how it has changed.
+
+print(TmatrixR)
+
+#calculate the sum and the mean of the elements in the first row and then the last row.
+sum1 <- sum(TmatrixR[,1])
+sum2 <- sum(TmatrixR[,n_dims])
+mean1 <- mean(TmatrixR[,1])
+mean2 <- mean(TmatrixR[,n_dims])
+
+print(sum1)
+print(sum2)
+print(mean1)
+print(mean2)
+```
+

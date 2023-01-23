@@ -1,0 +1,95 @@
+---
+title: "Assignment 5"
+author: "Lauren Thomson"
+date: "2023-01-19"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## Continued from Assignment 4 
+## Question #2
+
+```{r}
+#Create a list with the following named elements:
+
+#my_matrix, which is a 4 x 4 matrix filled with random uniform values
+
+my_matrix <- matrix(data = runif(16), nrow = 4, ncol = 4)
+print(my_matrix)
+#my_logical which is a 100-element vector of TRUE or FALSE values. You can do this efficiently by setting up a vector of random values and then applying an inequality to it.
+
+my_logical <- runif(100) > 0.5 
+print(my_logical)
+
+#my_letters, which is a 26-element vector of all the lower-case letters in random order.
+
+my_letters <- sample(letters)
+print(my_letters)
+
+###creating list
+
+my_list <- list(my_matrix, my_logical, my_letters)
+print(my_list)
+
+#create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector.
+
+new_list<- list(my_matrix[2,2], my_logical[2], my_letters[2])
+print(new_list)
+#use the typeof() function to confirm the underlying data types of each component in this list
+
+typeof(new_list)
+
+#combine the underlying elements from the new list into a single atomic vector with the c() function.
+
+vec <- c(my_matrix[2,2], my_logical[2], my_letters[2])
+print(vec)
+#what is the data type of this vector?
+typeof(vec)
+```
+## Question #3: 
+
+```{r}
+#Create an empty data frame with two variables (= columns) and 26 observations (= rows) below:
+
+VarA= 1:26
+VarB = 1:26
+dFrame = data.frame(VarA, VarB, stringsAsFactors = F)
+dFrame[dFrame > 0.5] <- NA
+print(dFrame)
+
+#call the first column/variable my_unifs and fill it with 26 random uniform values from 0 to 10. call the second variable my_letters and fill it with 26 capital letters in random order.
+
+my_unifs = runif(26, 0, 10)
+my_letters = sample(LETTERS)
+dFrame = data.frame(my_unifs, my_letters, stringsAsFactors = F)
+print(dFrame)
+
+#for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA.
+
+dFrame[sample(nrow(dFrame), 4), 1] <- NA  
+print(dFrame)
+
+#for the first variable, write a single line of R code to identify which rows have the missing values.
+
+which(is.na(dFrame[,1]))
+
+#re-order the entire data frame to arrange the second variable in alphabetical order.
+
+orderedFrame <- dFrame[order(dFrame$my_letters),]
+print(orderedFrame)
+#calculate the column mean for the first variable.
+
+my_unifs = runif(26, 0, 10)
+my_letters = sample(LETTERS)
+dFrame = data.frame(my_unifs, my_letters, stringsAsFactors = F)
+mean_unifs <- mean(dFrame[,1])
+print(mean_unifs <- mean(dFrame[,1]))
+
+#rename the second column ‘my_LETTERS’
+my_LETTERS = sample(LETTERS)
+dFrame = data.frame(my_unifs, my_LETTERS, stringsAsFactors = F)
+
+```
+

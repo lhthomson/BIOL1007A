@@ -1,0 +1,62 @@
+---
+title: "Weekly Assignment 2"
+author: "Lauren Thomson"
+date: "2023-01-23"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## Creating Functions
+
+### 1. Create a function that returns a data frame with 2 columns (named “Type” and “Value”) and 50 rows/observations.
+
+```{r}
+
+######################
+# Function: dFrame 
+# Input: Two means of random normal numbers
+# output data frame with 2 columns, Type and Value 
+#-------------------------------
+dFrame <- function(a=10, b=45){
+  Type = c(rep(x = "Control", times = 25), rep( x = "Treatment", times = 25))
+  Value = c(rnorm(25, mean = a, sd=1), rnorm(25, mean = b, sd=2))
+  data_frame<-data.frame(Type, Value, stringsAsFactors = F)
+  return(data_frame)
+} 
+                 
+```
+### 2. Save your new function’s output as a variable, and view the first 6 rows of the data frame.
+```{r}
+data_50 <- dFrame(a=10, b=45) #saving funtion as a variable
+
+head(data_50) #looking at first 6 lines of data frame
+```
+
+### 3. Write a line of code that displays a summary of your ANOVA
+
+```{r}
+summary(aov(Value~Type, data = data_50))
+```
+### 4. Create a function that uses a data frame as its input and returns only the p-value of an ANOVA summary table
+
+```{r}
+
+##############
+# Function: dFrame_stats 
+# Input: data frame with two columns 
+# Reutrn: p-value of an ANOVA summary table
+#------------------
+dFrame_stats <- function(df){
+    x <- df[,1]
+    y <- df[,2]
+    stats<-summary(aov(y~x, data = df))
+    stats_list <- unlist(stats)
+    p_value<-stats_list[9]
+    return(p_value)
+}
+
+print(dFrame_stats(data_50))
+```
+
