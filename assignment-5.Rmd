@@ -39,7 +39,9 @@ new_list<- list(my_matrix[2,2], my_logical[2], my_letters[2])
 print(new_list)
 #use the typeof() function to confirm the underlying data types of each component in this list
 
-typeof(new_list)
+typeof(new_list[[1]])
+typeof(new_list[[2]])
+typeof(new_list[[3]])
 
 #combine the underlying elements from the new list into a single atomic vector with the c() function.
 
