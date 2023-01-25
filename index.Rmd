@@ -28,6 +28,10 @@ On this webpage you can find links to all of my projects as I learn to code in R
 
 [Assignment 5](assignment-5.html)
 
+[Assignment 6](assignment-6.html)
+
+[Assignment 7](assignment-7.html)
+
 ## Weekly Assignments 
 
 [Weekly Assignment 1](weekly-assignment-1.html)

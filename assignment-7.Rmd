@@ -1,0 +1,115 @@
+---
+title: "Assignment 7"
+author: "Lauren Thomson"
+date: "2023-01-24"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+### 1. Using the built-in starwars data set in the dplyr package, create a new tibble with the following modifications:
+
+```{r}
+library(dplyr)
+#It only includes the species that have more than 1 individual represented in the data set. (hint: first use dplyr to summarize the number of individuals per species in the data frame; then create a vector/tibble of those names; subset the species that are included in that vector)
+data(starwars)
+sw_species <- starwars %>%
+  group_by(species) %>%
+  summarize(TotalNumber=n()) %>%
+  filter(TotalNumber > 1)
+
+final <- starwars %>%
+  filter(species %in% sw_species$species)
+
+ 
+final_2 <- final %>% 
+  select(-(films:starships))
+
+
+#It only includes the columns that are not of type list (hint: use glimpse to check)
+
+glimpse(final_2)
+
+```
+### 2. Clean your data set: only include observations/rows that do not have an NA in the height column. Then, use dplyr to print a summary table showing the mean, median, and standard deviation of height for each species.
+```{r}
+glimpse(final_2)
+finalClean <- final_2[complete.cases(final_2 [,2]), ]
+
+
+
+library(dplyr)
+finalStats <- finalClean %>%
+  group_by(species)%>%
+  summarize(MeanHeight = mean(height), MedianHeight = median(height), StDvHeight = sd(height))
+
+print(finalStats)
+```
+### 3. 
+
+```{r}
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(viridis)
+
+cols <- viridis(9, option = "viridis") 
+species_height<-  ggplot(data = finalClean, aes(x=species, y=height, fill = species)) + 
+  geom_boxplot() + 
+  xlab("Species") +
+  ylab("Height cm") + 
+  theme_minimal() +
+  geom_text(x=9, y=230, label="p=1.2E-0.5")+
+  scale_fill_manual(values=cols) 
+
+print(species_height)
+```
+
+
+### Challenge Question: overlay the data points onto the box plots.
+
+```{r}
+cols <- viridis(9, option = "viridis") 
+species_height_overlay <-  ggplot(data = finalClean, aes(x=species, y=height, fill = species)) + 
+  geom_boxplot() + 
+  xlab("Species") +
+  ylab("Height cm") + 
+  theme_minimal() +
+  geom_text(x=9, y=230, label="p=1.2E-0.5")+
+  scale_fill_manual(values=cols) +
+  geom_point(size=2, shape = 25, aes(color = gender))
+
+print(species_height_overlay)
+
+```
+
+### 4. Using the same or a different built-in data set, create at least one additional plot. 
+
+```{r}
+data(iris)
+glimpse(iris)
+anyNA(iris)
+
+sepal_variation <- ggplot(data = iris, aes(x=Sepal.Width, y=Sepal.Length)) + 
+  geom_point(size=4, shape = 25, color = "magenta", fill= "forestgreen") + 
+  xlab("Sepal.Width cm") +
+  ylab("Sepal.Length cm") + 
+  theme_minimal() +
+  geom_smooth(method = "lm", se = F) +
+  scale_fill_manual(values=cols)
+
+print(sepal_variation)
+```
+
+### 5 
+
+```{r}
+(sepal_variation + species_height )/ species_height_overlay
+
+
+```
+
+
+
+
+
