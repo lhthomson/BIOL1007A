@@ -32,9 +32,13 @@ On this webpage you can find links to all of my projects as I learn to code in R
 
 [Assignment 7](assignment-7.html)
 
+[Assignment 8](assigntment-8.html)
+
 ## Weekly Assignments 
 
 [Weekly Assignment 1](weekly-assignment-1.html)
 
 [Weekly Assignment 2](weekly-assignment-2.html)
+
+[Weekly Assignment 3](weekly-assignment-3.html)
 

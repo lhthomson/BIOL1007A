@@ -371,9 +371,11 @@ rows of this data set.</h2>
 ## 4          7.7         2.8 virginica
 ## 5          7.7         3.0 virginica
 ## 6          7.6         3.0 virginica</code></pre>
-<p>##5. Create an iris4 data frame from iris3 that creates a column with
+</div>
+<div id="create-an-iris4-data-frame-from-iris3-that-creates-a-column-with-a-sepal-area-length-width-value-for-each-observation.-how-many-observations-and-variables-are-in-the-data-set" class="section level2">
+<h2>5. Create an iris4 data frame from iris3 that creates a column with
 a sepal area (length * width) value for each observation. How many
-observations and variables are in the data set?</p>
+observations and variables are in the data set?</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>iris4 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(iris3, <span class="at">Sepal.Area =</span> Sepal.Length <span class="sc">*</span> Sepal.Width)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iris4)</span></code></pre></div>
 <pre><code>## Rows: 56
@@ -405,9 +407,11 @@ iris4 data frame and print iris5.</h2>
 ##   &lt;fct&gt;                  &lt;dbl&gt;            &lt;dbl&gt;        &lt;int&gt;
 ## 1 versicolor              6.48             2.99           17
 ## 2 virginica               6.79             3.06           39</code></pre>
-<p>#8. Rework all of your previous statements (except for irisTab) into
+</div>
+<div id="rework-all-of-your-previous-statements-except-for-iristab-into-an-extended-piping-operation-that-uses-iris-as-the-input-and-generates-irisfinal-as-the-output." class="section level2">
+<h2>8. Rework all of your previous statements (except for irisTab) into
 an extended piping operation that uses iris as the input and generates
-irisFinal as the output.</p>
+irisFinal as the output.</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. iris1</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>finaliris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
@@ -416,14 +420,14 @@ irisFinal as the output.</p>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="at">by=</span><span class="fu">desc</span>(Sepal.Length)) <span class="sc">%&gt;%</span></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Sepal.Area =</span> Sepal.Length <span class="sc">*</span> Sepal.Width) <span class="sc">%&gt;%</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(<span class="at">mean.Sepal.Length =</span> <span class="fu">mean</span>(Sepal.Length), <span class="at">mean.Sepal.Width =</span> <span class="fu">mean</span>(Sepal.Width), <span class="at">TotalNumbers =</span> <span class="fu">n</span>())</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(<span class="at">mean.Sepal.Length =</span> <span class="fu">mean</span>(Sepal.Length), <span class="at">mean.Sepal.Width =</span> <span class="fu">mean</span>(Sepal.Width), <span class="at">mean.Sepal.Area =</span> <span class="fu">mean</span>(Sepal.Area), <span class="at">TotalNumbers =</span> <span class="fu">n</span>())</span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(finaliris)</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 4
-##   Species    mean.Sepal.Length mean.Sepal.Width TotalNumbers
-##   &lt;fct&gt;                  &lt;dbl&gt;            &lt;dbl&gt;        &lt;int&gt;
-## 1 versicolor              6.48             2.99           17
-## 2 virginica               6.79             3.06           39</code></pre>
+<pre><code>## # A tibble: 2 × 5
+##   Species    mean.Sepal.Length mean.Sepal.Width mean.Sepal.Area TotalNumbers
+##   &lt;fct&gt;                  &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;        &lt;int&gt;
+## 1 versicolor              6.48             2.99            19.4           17
+## 2 virginica               6.79             3.06            20.8           39</code></pre>
 </div>
 </section>
 

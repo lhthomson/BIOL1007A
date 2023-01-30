@@ -37,7 +37,7 @@ glimpse(iris2)
 iris3 <- arrange(iris2, by=desc(Sepal.Length))
 head(iris3)
 ```
-##5. Create an iris4 data frame from iris3 that creates a column with a sepal area (length * width) value for each observation. How many observations and variables are in the data set?
+## 5. Create an iris4 data frame from iris3 that creates a column with a sepal area (length * width) value for each observation. How many observations and variables are in the data set?
 
 ```{r}
 iris4 <- mutate(iris3, Sepal.Area = Sepal.Length * Sepal.Width)
@@ -61,7 +61,7 @@ iris4 %>%
   summarize(mean.Sepal.Length = mean(Sepal.Length), mean.Sepal.Width = mean(Sepal.Width), TotalNumbers = n())
 ```
 
-#8. Rework all of your previous statements (except for irisTab) into an extended piping operation that uses iris as the input and generates irisFinal as the output.
+## 8. Rework all of your previous statements (except for irisTab) into an extended piping operation that uses iris as the input and generates irisFinal as the output.
 
 ```{r}
 # 2. iris1
@@ -72,7 +72,7 @@ finaliris <- iris %>%
   arrange(by=desc(Sepal.Length)) %>%
    mutate(Sepal.Area = Sepal.Length * Sepal.Width) %>%
   group_by(Species) %>%
- summarize(mean.Sepal.Length = mean(Sepal.Length), mean.Sepal.Width = mean(Sepal.Width), TotalNumbers = n())
+ summarize(mean.Sepal.Length = mean(Sepal.Length), mean.Sepal.Width = mean(Sepal.Width), mean.Sepal.Area = mean(Sepal.Area), TotalNumbers = n())
   
 print(finaliris)
 

@@ -1,0 +1,40 @@
+---
+title: "Weekly Assignment 3"
+author: "Lauren Thomson"
+date: "2023-01-26"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## 1. Go to Dryad to choose a published paper and data set and reconstruct your own figure. Code a ggplot graph that looks as close to the published figure as you can.
+
+
+[Link to my graph](https://academic.oup.com/view-large/figure/204021962/duaa006f0002.jpg)
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+flockData <- read.table(file="Dryad_File_2.csv", header=T, sep = ",")
+
+g1 <- ggplot(data = flockData, aes(x=X1km_forest, y=Size)) +
+  geom_point(aes(y = Size), size=2, shape = 20, color = "darkblue") + 
+  geom_smooth(aes(y=Size), method = "lm", se = F, color = "darkblue") +
+  geom_point(aes(y = Species), size=2, shape = 2, color = "red") + 
+  geom_smooth(aes(y=Species), method = "lm", se = F, color ="red") +
+  xlab("Percentage forest cover") +
+  ylab("Number of flocking species") +
+  geom_text(x=10, y=51, label="A") +
+  theme_classic() +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(colour = "black", size=1)) 
+
+print(g1)
+
+
+```
+
+To make this graph I learned how to plot two seperate y variables on the same scatter plot. I struggled with adding the legend in this graph because all the ways I looked up showed that a legend is added by adding a col = section to the ggplot() but I have 2 y variables I am plotting. I think to effectively do this I need to use pivot longer and make the y variables in one column and have another column specifying whether or not the number is regarding species richness or flock size and then in gg plot col= by that, however, editing the data like that was a little out of my depth and I got lost. Also, the bottom graph I tried for so long and manipulated lots of data and for the life of me can't figure out what data they used to make the chart!
+

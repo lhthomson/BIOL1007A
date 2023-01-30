@@ -1,0 +1,143 @@
+---
+title: "Assignment 8"
+author: "Lauren Thomson"
+date: "2023-01-26"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+## Code Reflection 
+
+### 1. Assignment 6
+
+6.2 
+
+```{r}
+is.na(iris) #checked for nas
+iris1 <- filter(iris, Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width > 2.5) #used & not , 
+glimpse(iris1)
+
+```
+
+For number two, our code differed slightly because I checked to see if the code had any NA's. This may have been an unnecessary step.  I also used the & sign instead of the commas and believe the commas would make the code slightly more readable. 
+
+6.3
+```{r}
+iris2 <- select(iris1, -(Petal.Length:Petal.Width)) #used select -() not just select and the columns I wanted. 
+glimpse(iris2)
+```
+
+For #3 instead of just using the select(), I added the - to remove the final 3 rows. However, the way I did it left species in the final column and not in the first one, and having species first is probably a more logical read. 
+
+
+6.4
+Our code looks the same!
+
+6.5
+Our code looks the same!
+
+6.6
+```{r}
+irisTab <- summarize(iris4, mean.Sepal.Length = mean(Sepal.Length), mean.Sepal.Width = mean(Sepal.Width), TotalNumbers = n()) #labeled n() as TotalnNumbers - not very descriptive
+print(irisTab)
+```
+
+For question 6 our code looks the same except you labeled n() Sample.Size which is a clearer label than Total.Numbers. 
+
+6.7
+
+```{r}
+iris4 %>% #did not assign to a variable
+  group_by(Species) %>%
+  summarize(mean.Sepal.Length = mean(Sepal.Length), mean.Sepal.Width = mean(Sepal.Width), TotalNumbers = n())
+```
+
+For #7 I (apparently) decided to use piping! I think it felt easier to break up the code then to write it out long. My piping would have been better if I assigned the code to its own variable. 
+
+6.8
+Our code looks the same! 
+
+### 2. Weekly Assignment 2
+
+W2.1
+
+```{r}
+######################
+# Function: dFrame 
+# Input: Two means of random normal numbers
+# output data frame with 2 columns, Type and Value 
+#-------------------------------
+#no set.seed
+dFrame <- function(a=10, b=45){ #no variable for sd and undescriptive argument names
+  Type = c(rep(x = "Control", times = 25), rep( x = "Treatment", times = 25))
+  Value = c(rnorm(25, mean = a, sd=1), rnorm(25, mean = b, sd=2))
+  data_frame<-data.frame(Type, Value, stringsAsFactors = F)
+  return(data_frame)
+} 
+```
+
+
+First I did not use set.seed(). Second, our code differs because my code has some mistakes. It runs, but unlike your code that has 4 arguments for both mean and sd, mine only has means for arguments. This unfortunately means that my funtions is far less functional as it can only make data frames with data of random means but set sd's. Also, your arguments are far better named to make the function clear (mine are called a and b, which is very unclear.)
+
+W2.2
+Looks the same!
+
+W2.3
+Looks good!
+
+W2.4
+
+```{r}
+dFrame_stats <- function(df){
+    x <- df[,1] # #I set x to all the rows in the first column
+    y <- df[,2] # I set y to al the rows in the second column 
+    stats<-summary(aov(y~x, data = df))
+    stats_list <- unlist(stats) #used the unlist function not testSummary
+    p_value<-stats_list[9] #indexed the lust 
+    return(p_value)
+}
+
+print(dFrame_stats(data_50))
+```
+
+Our code for number 4 looks different, when I did it for some reason it would not recognize value and type when I wrote them in the function because data was set to a generic d(f). Therefore, I indexed and named x and y above. Also, our p_value variables look different. I did not know about testSummary so I used unlist which seems slightly less efficient. 
+
+W2 Changes:
+
+Code Success: My code does work with new means! With the means 20 and 50 I got a P value of 5.74 x 10^-50. 
+
+Code Changes: Despite the fact that the code works, the code would be better if I could change more than just the means. For example:
+
+```{r}
+dFrame <- function(mean1=10, sd1 = 1, n1 = 25, mean2=45, sd2 = 2, n = 25){
+  Type = c(rep(x = "Control", times = 25), rep( x = "Treatment", times = 25))
+  Value = c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean1, sd= sd2))
+  data_frame<-data.frame(Type, Value, stringsAsFactors = F)
+  return(data_frame)
+} 
+```
+
+
+## 3. 
+
+```{r}
+p<- ggplot(data=dryadData, 
+           aes(x=interaction(wetland, treatment), 
+               y=count.total.adults, fill=factor(year))) + geom_bar(position="dodge", stat="identity", color="white") + #made white outlines 
+  ylab("Number of breeding adults") +
+  xlab("") +
+  scale_y_continuous(breaks = c(0,100,200,300,400,500)) +
+  scale_x_discrete(labels=c("30 (Ref)", "124 (Ref)", "141 (Ref)", "25 (100m)","39 (100m)","55 (100m)","129 (100m)", "7 (30m)","19 (30m)","20 (30m)","59 (30m)")) +
+  facet_wrap(~species, nrow=2, strip.position="right") +
+  theme_few() + scale_fill_hue(l=40)+ #changed fill of bar graph
+  theme(panel.background = element_rect(fill = 'black', color = 'black'), legend.position="top",  legend.title= element_blank(), axis.title.y = element_text(size=12, face="bold", colour = "black"), strip.text.y = element_text(size = 10, face="bold", colour = "black")) + # changed baclground
+  guides(fill=guide_legend(nrow=1,byrow=TRUE)) 
+
+print(p)
+```
+
+
+
+
+
