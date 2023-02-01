@@ -200,16 +200,16 @@ times. Store the results in a data frame that has 1 column indicating
 the replicate number and 1 column for the p-values (a total of 2 columns
 and 100 rows).</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_pvalue <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">mean1=</span><span class="dv">10</span>, <span class="at">sd1 =</span> <span class="dv">1</span>, <span class="at">n=</span><span class="dv">25</span>, <span class="at">mean2=</span><span class="dv">45</span>, <span class="at">sd2 =</span> <span class="dv">2</span>){</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  data_frame_p <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;Iteration&quot;</span>, <span class="st">&quot;P_Value&quot;</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  data_frame_p <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;Iteration&quot;</span>, <span class="st">&quot;P_Value&quot;</span>) <span class="co">#making empty data frame</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   Type <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="at">x =</span> <span class="st">&quot;Control&quot;</span>, <span class="at">times =</span> n), <span class="fu">rep</span>( <span class="at">x =</span> <span class="st">&quot;Treatment&quot;</span>, <span class="at">times =</span> n))</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   Value <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> mean1, <span class="at">sd =</span> sd1), <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mean1, <span class="at">sd=</span> sd2))</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Type, Value, <span class="at">stringsAsFactors =</span> F)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> <span class="fu">aov</span>(Value <span class="sc">~</span> Type, <span class="at">data=</span>data_frame)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    testSummary <span class="ot">&lt;-</span> <span class="fu">summary</span>(test)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> testSummary[[<span class="dv">1</span>]][[<span class="st">&quot;Pr(&gt;F)&quot;</span>]][<span class="dv">1</span>]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    data_frame_p <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data_frame_p, <span class="fu">c</span>(i, p_value))</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    mean1 <span class="ot">&lt;-</span> mean1 <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> <span class="fu">aov</span>(Value <span class="sc">~</span> Type, <span class="at">data=</span>data_frame) <span class="co">#performing aov</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    testSummary <span class="ot">&lt;-</span> <span class="fu">summary</span>(test) <span class="co">#saving summary as variable</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> testSummary[[<span class="dv">1</span>]][[<span class="st">&quot;Pr(&gt;F)&quot;</span>]][<span class="dv">1</span>] <span class="co">#indexing pValue</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    data_frame_p <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data_frame_p, <span class="fu">c</span>(i, p_value)) <span class="co">#adding each iteration to old dataframe</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    mean1 <span class="ot">&lt;-</span> mean1 <span class="sc">+</span> <span class="dv">1</span> <span class="co">#changing data values (same as with below)</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    sd1 <span class="ot">&lt;-</span> sd1 <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> n <span class="sc">+</span><span class="dv">1</span> </span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    mean2 <span class="ot">&lt;-</span> mean2 <span class="sc">+</span> <span class="dv">1</span> </span>
@@ -220,106 +220,106 @@ and 100 rows).</h2>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">df_pvalue</span>()</span></code></pre></div>
 <pre><code>##     X.Iteration.         X.P_Value.
 ## 1      Iteration            P_Value
-## 2              1 0.0924180593157878
-## 3              2  0.732304654110906
-## 4              3  0.157464608385021
-## 5              4  0.820260064462852
-## 6              5   0.71509330614368
-## 7              6  0.306463144006768
-## 8              7  0.691911991555016
-## 9              8  0.866250034326583
-## 10             9  0.320474656503883
-## 11            10  0.920761921155053
-## 12            11  0.583857564660401
-## 13            12  0.468384084497322
-## 14            13  0.286722484196288
-## 15            14  0.369959645130467
-## 16            15   0.69672679836694
-## 17            16  0.259121530899548
-## 18            17 0.0704138054543286
-## 19            18  0.396674409865979
-## 20            19  0.328945809660667
-## 21            20  0.449937547385164
-## 22            21  0.214520384479857
-## 23            22  0.878086131795258
-## 24            23  0.706743369336137
-## 25            24  0.722421575013483
-## 26            25   0.31259773780665
-## 27            26  0.586665383659605
-## 28            27  0.700831204870988
-## 29            28 0.0458318474168614
-## 30            29  0.353705239004991
-## 31            30  0.558022876799958
-## 32            31   0.46954087228737
-## 33            32   0.99121799347581
-## 34            33  0.914606236386759
-## 35            34  0.642100565351133
-## 36            35 0.0497186266323348
-## 37            36  0.620831678690784
-## 38            37  0.638934621550865
-## 39            38  0.263186498534566
-## 40            39  0.539113155841192
-## 41            40  0.458935570056126
-## 42            41  0.894039338399238
-## 43            42   0.54286374247442
-## 44            43  0.665364416571795
-## 45            44   0.21679894597727
-## 46            45  0.757449588505536
-## 47            46  0.101341782510853
-## 48            47  0.596238610250849
-## 49            48  0.574262203109255
-## 50            49  0.607423335736822
-## 51            50   0.21184622032888
-## 52            51  0.879226466619385
-## 53            52  0.375510447343782
-## 54            53  0.275552794795139
-## 55            54  0.746366148039136
-## 56            55  0.949119074671796
-## 57            56  0.275193591228566
-## 58            57  0.591991629411801
-## 59            58  0.727499310074548
-## 60            59  0.495688052450984
-## 61            60   0.30936092928917
-## 62            61  0.514862628818831
-## 63            62  0.804235630177054
-## 64            63  0.270995310509594
-## 65            64  0.851744699314442
-## 66            65  0.549785444183262
-## 67            66  0.675613519479603
-## 68            67  0.958393287760464
-## 69            68  0.195862354537534
-## 70            69  0.844135445878666
-## 71            70  0.791950717038214
-## 72            71    0.1576852462107
-## 73            72  0.597201272004668
-## 74            73  0.918471364707795
-## 75            74  0.452628042850236
-## 76            75  0.870403858406448
-## 77            76  0.105400738199763
-## 78            77  0.965411428071417
-## 79            78   0.89701585401981
-## 80            79  0.712521117407875
-## 81            80  0.969173266377242
-## 82            81  0.351801534495234
-## 83            82  0.772993322187689
-## 84            83  0.218614452446171
-## 85            84  0.734905834574556
-## 86            85  0.147053474361941
-## 87            86  0.590343772050767
-## 88            87 0.0163862070285013
-## 89            88  0.303413033536029
-## 90            89   0.81027080725339
-## 91            90  0.737835858669507
-## 92            91 0.0713314972043139
-## 93            92     0.364813103876
-## 94            93  0.768074528812332
-## 95            94  0.564019182979379
-## 96            95  0.544155240394946
-## 97            96  0.775146313949383
-## 98            97  0.929838571828577
-## 99            98  0.333400452715038
-## 100           99  0.163757351583895
-## 101          100  0.242998227775294</code></pre>
+## 2              1  0.251738002948315
+## 3              2  0.420611528282414
+## 4              3  0.612702901197235
+## 5              4  0.538137114780816
+## 6              5  0.146534551705252
+## 7              6   0.15796002640404
+## 8              7  0.415935216151398
+## 9              8  0.206234271750423
+## 10             9 0.0975478968880951
+## 11            10  0.212100723674096
+## 12            11  0.225739626011375
+## 13            12  0.637265219539103
+## 14            13  0.236527344357686
+## 15            14  0.927087837887413
+## 16            15  0.943741886735311
+## 17            16   0.90023066518092
+## 18            17  0.346710361301714
+## 19            18  0.762314031772498
+## 20            19  0.449635469073963
+## 21            20  0.250733705558436
+## 22            21  0.379400747757685
+## 23            22  0.069496533731436
+## 24            23 0.0235702781083808
+## 25            24   0.42965308709959
+## 26            25  0.440306316467735
+## 27            26  0.382190946679121
+## 28            27  0.798924905911947
+## 29            28  0.836802020563882
+## 30            29   0.48707984130208
+## 31            30  0.765472187649518
+## 32            31 0.0944082536708884
+## 33            32  0.714597441743948
+## 34            33  0.948932272699409
+## 35            34 0.0216726287986311
+## 36            35    0.6711205461729
+## 37            36  0.939924540524053
+## 38            37 0.0784753496374878
+## 39            38   0.90784958684872
+## 40            39   0.17165608772893
+## 41            40  0.326721541786048
+## 42            41  0.502517101013399
+## 43            42  0.647056929597616
+## 44            43  0.461047561200032
+## 45            44  0.302095863695779
+## 46            45  0.191613179653795
+## 47            46  0.831548350216598
+## 48            47  0.932254599167767
+## 49            48  0.469055499441047
+## 50            49  0.655935189370833
+## 51            50  0.652426150419963
+## 52            51  0.469489401794431
+## 53            52  0.749876966773098
+## 54            53  0.499446417255283
+## 55            54 0.0303223759976953
+## 56            55  0.478825902677783
+## 57            56  0.544654223858698
+## 58            57  0.919676021669958
+## 59            58  0.361355500465435
+## 60            59  0.147618572609273
+## 61            60  0.887058550968378
+## 62            61  0.819562896560952
+## 63            62  0.841271746214458
+## 64            63  0.230409079175977
+## 65            64  0.540360502033493
+## 66            65    0.5039846382645
+## 67            66  0.787993788487171
+## 68            67  0.271659257460737
+## 69            68  0.788011128150124
+## 70            69  0.713222847503021
+## 71            70  0.772277722666804
+## 72            71  0.754205727947065
+## 73            72   0.74499002917847
+## 74            73  0.286395456327392
+## 75            74  0.915893109347827
+## 76            75  0.836911700549512
+## 77            76  0.899626705188836
+## 78            77  0.246922722102633
+## 79            78 0.0543924704743825
+## 80            79  0.923649304104303
+## 81            80  0.769664065586412
+## 82            81   0.55671022490242
+## 83            82  0.826700013484081
+## 84            83  0.877776816038127
+## 85            84  0.717844155451728
+## 86            85  0.185496619509777
+## 87            86  0.877911483357033
+## 88            87  0.561848660630484
+## 89            88  0.551917408535559
+## 90            89  0.295722622098176
+## 91            90  0.119499024630232
+## 92            91   0.24954138433541
+## 93            92  0.743829197133491
+## 94            93   0.85364781109124
+## 95            94  0.593044172188598
+## 96            95  0.344096565927502
+## 97            96 0.0140373028735495
+## 98            97  0.208783521938786
+## 99            98  0.997496091229961
+## 100           99 0.0272554842832386
+## 101          100  0.215115930968343</code></pre>
 </div>
 </section>
 

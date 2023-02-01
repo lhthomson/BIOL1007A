@@ -44,3 +44,5 @@ On this webpage you can find links to all of my projects as I learn to code in R
 
 [Weekly Assignment 3](weekly-assignment-3.html)
 
+[Weekly Assignment 4](weekly-assignment-4.html)
+

@@ -1,0 +1,35 @@
+---
+title: "Weekly Assignment 4"
+author: "Lauren Thomson"
+date: "2023-02-01"
+output: html_document
+---
+##. 1 Simulate a brand new data frame (the type of data is up to you) and conduct a statistical analysis in R using 2 variables. Create a basic ggplot that goes with the analysis.
+
+```{r}
+  library(tidyverse)
+  #Creating dataframe on made up date about how coffee affects heartrate
+  Drink <- c(rep(x = "Water", times = 20), rep( x = "Coffee", times = 20))
+  Heartrate <- c(sample(x=40:120, 20), sample(x=40:120, 20))
+  HRdata <- data.frame(Drink, Heartrate, stringsAsFactors = F)
+  HRdata
+  
+  #conducting ANOVA test on heartrate data
+  test <- aov(Heartrate ~ Drink, data = HRdata)
+  testSummary <- summary(test)
+  print(testSummary)
+  #P value of 0.401 is not significant. 
+  
+  #creating ggplot
+  
+ HRgraph <- HRdata %>% 
+     ggplot(aes(x=Drink, y=Heartrate)) + 
+     geom_boxplot(fill="lightblue", col="black") + 
+     xlab("Type of Drink") +
+     ylab("Heartrate bpm") + 
+     theme_classic()
+
+ print(HRgraph)
+  
+```
+

@@ -43,16 +43,16 @@ buildm(rows=5, columns=4)
 
 ```{r}
 df_pvalue <- function(mean1=10, sd1 = 1, n=25, mean2=45, sd2 = 2){
-  data_frame_p <- data.frame("Iteration", "P_Value") 
+  data_frame_p <- data.frame("Iteration", "P_Value") #making empty data frame
   for (i in 1:100) {
    Type = c(rep(x = "Control", times = n), rep( x = "Treatment", times = n))
    Value = c(rnorm(n, mean = mean1, sd = sd1), rnorm(n, mean = mean1, sd= sd2))
    data_frame <- data.frame(Type, Value, stringsAsFactors = F)
-    test <- aov(Value ~ Type, data=data_frame)
-    testSummary <- summary(test)
-    p_value <- testSummary[[1]][["Pr(>F)"]][1]
-    data_frame_p <- rbind(data_frame_p, c(i, p_value))
-    mean1 <- mean1 + 1 
+    test <- aov(Value ~ Type, data=data_frame) #performing aov
+    testSummary <- summary(test) #saving summary as variable
+    p_value <- testSummary[[1]][["Pr(>F)"]][1] #indexing pValue
+    data_frame_p <- rbind(data_frame_p, c(i, p_value)) #adding each iteration to old dataframe
+    mean1 <- mean1 + 1 #changing data values (same as with below)
     sd1 <- sd1 + 1
     n <- n +1 
     mean2 <- mean2 + 1 
