@@ -34,6 +34,8 @@ On this webpage you can find links to all of my projects as I learn to code in R
 
 [Assignment 8](assignment-8.html)
 
+[Assignment 9](assignment-9.html)
+
 ## Weekly Assignments 
 
 [Weekly Assignment 1](weekly-assignment-1.html)

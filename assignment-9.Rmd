@@ -1,0 +1,67 @@
+---
+title: "Assignment 9"
+author: "Lauren Thomson"
+date: "2023-01-30"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## 1. Using a for loop and an if statement, write a function to calculate the number of zeroes in a numeric vector. Before entering the loop, set up a vector of integers with some zero values
+
+```{r}
+vect <- sample(rep(0:1, times=4))
+varcounter <- 0 
+zeros <- function(vector){
+  for (i in 1:length(vector)){
+  if (vect[i]==0) {varcounter <- varcounter + 1} 
+  }
+  return(varcounter)
+}
+zeros(vect)
+```
+ 
+## 2. Write a function that takes as input two integers representing the number of rows and columns in a matrix. The output is a matrix of these dimensions in which each element is the product of the row number x the column number. 
+
+```{r}
+buildm <- function (rows, columns){
+  matrix <- matrix(data=NA, nrow= rows, ncol = columns)
+  for(i in 1:rows){
+    for(j in 1:columns){
+      matrix[i,j] <- i * j
+  }
+  }  
+  return (matrix)
+}
+buildm(rows=5, columns=4)
+
+```
+
+
+## 3. Use a for loop to repeat your previous functions from Weekly Assignment 2 (which simulate a data frame and extract a p-value) 100 times. Store the results in a data frame that has 1 column indicating the replicate number and 1 column for the p-values (a total of 2 columns and 100 rows).
+
+```{r}
+df_pvalue <- function(mean1=10, sd1 = 1, n=25, mean2=45, sd2 = 2){
+  data_frame_p <- data.frame("Iteration", "P_Value") 
+  for (i in 1:100) {
+   Type = c(rep(x = "Control", times = n), rep( x = "Treatment", times = n))
+   Value = c(rnorm(n, mean = mean1, sd = sd1), rnorm(n, mean = mean1, sd= sd2))
+   data_frame <- data.frame(Type, Value, stringsAsFactors = F)
+    test <- aov(Value ~ Type, data=data_frame)
+    testSummary <- summary(test)
+    p_value <- testSummary[[1]][["Pr(>F)"]][1]
+    data_frame_p <- rbind(data_frame_p, c(i, p_value))
+    mean1 <- mean1 + 1 
+    sd1 <- sd1 + 1
+    n <- n +1 
+    mean2 <- mean2 + 1 
+    sd2 <- sd2 + 1 
+   }
+  return (data_frame_p)
+}
+df_pvalue()
+
+   
+```
+ 
