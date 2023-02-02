@@ -1,0 +1,87 @@
+---
+title: "Final Project"
+author: "Lauren Thomson"
+date: "2023-02-02"
+output: 
+  prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
+---
+
+## Learning LaTeX
+
+
+1. LaTeX is a software development system document preparation. It differs from Word or pages because you write in free text and then mark up the formatting. I decided to learn about LaTex because I love writing, researching, and the editing process of papers and thought that learning this software would be a useful skill to have as I enter into research careers. Working on my senior research this summer and fall, I learned how annoying formatting in Word can be and wanted to start introducing myself to the language that scientists are learning to publish their work! 
+
+
+2. To start learning LaTeX I explored online resources that could help me understand the basic notation of the language and what different symbols meant. I found one resource, Overleaf, that was super helpful. Overleaf provided a very thourough guide to learning the different commands and capabilites of LaTeX as well as has a function where you can write in LaTeX and see your PDF side by side. This was super helpful for me to begin to process how LaTeX reads your formatting and processes it into a PDF. 
+
+
+To start learning LaTeX, I would first go to [Overleaf](https://www.overleaf.com/login?) and make an account. Next, I would start to familiarize yourself with this open source [tutorial packet](https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1)) that will step by step take you through the notation of LaTeX. 
+
+
+### Here are some of the most important things I learned: 
+
+1. LaTeX responds to commands which are written after a \  
+2. All LaTeX document start by classifying the type of document you are writing. 
+    * For example: article, report, book, etc. 
+3. It is important to tell LaTeX when you are starting and ending something. 
+    * For example: You must always \begin{document} \end{document} 
+4. Most articles, reports, and books are structured by using \section{} and        \subsection{}  
+4. LaTeX can keep your work incredibly organized by using commands \label{} \ref
+    * After you create a \section{Introduction} creating a \label{sec:intro} will         allow you to reference it by writing \ref{sec:intro}  
+5. Like in R there are additional packages that you can upload.
+    * For example: Uploading graphicx at the beginning of your document will allow        you to manipulate your photos
+6. The % is used to make comments to yourself. 
+
+### Now that you have those tips here is a sample structure of LaTeX code. 
+```{r}
+
+#\documentclass{report}
+#\usepackage[utf8]{inputenc}
+#\usepackage{graphicx}
+#\title{An assessment of lead use restrictions and risk communication within hunting and fishing policies}
+#\author{Lauren Thomson}
+#\date{February 2023} 
+
+#\begin{document}
+#\maketitle
+
+#\begin{abstract}
+#Insert Text
+#\end{abstract}
+
+#\section{Introduction}
+
+#Insert Text
+
+#subsection{Title}
+
+#\section{Results}
+#\label{sec:res}
+
+#\section{Methods}
+#\subsection{Title}
+#Insert Text 
+#\begin{figure}
+#\begin{center}
+#\includegraphics{references1.png}
+#\end{center}
+#\end{figure}
+
+#section{Discussion}
+
+#\end{document}
+
+```
+
+In the code above, I would have produced a document with an introduction, methods, results, and discussion section. The paper would have a seperate title page and an abstrate. Only the results section is labelled and there is a single graphic included. 
+
+To get a handle on LaTeX for myself I thought it would be fun to try and take an old research paper and reformat it into a more professional format. Using a paper I wrote on Prodromal Olfactory Dysfunction as a Biomarker for Parkinson’s Disease, I attempted to use my new knowledge in LaTeX in a more professional report. See below for some images of my report!
+
+
+
+
+My next steps are to get a better handle on referencing citations in LaTeX! 
+
+I hope this small guide is helpful to anyone hoping to get started learning LaTex!

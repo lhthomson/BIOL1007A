@@ -46,3 +46,6 @@ On this webpage you can find links to all of my projects as I learn to code in R
 
 [Weekly Assignment 4](weekly-assignment-4.html)
 
+## Final Project
+
+[Final Project](final-project.html)
