@@ -79,6 +79,13 @@ In the code above, I would have produced a document with an introduction, method
 
 To get a handle on LaTeX for myself I thought it would be fun to try and take an old research paper and reformat it into a more professional format. Using a paper I wrote on Prodromal Olfactory Dysfunction as a Biomarker for Parkinson’s Disease, I attempted to use my new knowledge in LaTeX in a more professional report. See below for some images of my report!
 
+![ ](file:///Users/laurenthomson/Documents/final_project_(1).JPG)
+
+![ ](file:///Users/laurenthomson/Documents/final_project_(3).JPG)
+
+![ ](file:///Users/laurenthomson/Documents/final_project_(4).JPG)
+
+![ ](file:///Users/laurenthomson/Documents/final_project_(5).JPG)
 
 
 
